@@ -1,0 +1,7 @@
+workflowx-client/node_modules
+workflowx-client/dist/
+workflowx-client/.env
+workflowx-client/.next/
+workflowx-server/node_modules
+workflowx-server/dist/
+workflowx-server/.env
