@@ -11,12 +11,8 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
-type Props = {
-    priority: Priority
-};
 
-
-const PriorityPage = ({ priority }: Props) => {
+const PriorityPage = (priority: Priority) => {
     const [view, setView] = useState("list");
     const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
     const userId = 1;
