@@ -1,5 +1,5 @@
 import React from 'react'
-import PriorityPage from '../PriorityPage.tsx/page'
+import PriorityPage from '../PriorityPage'
 import { Priority } from '@/types'
 
 
