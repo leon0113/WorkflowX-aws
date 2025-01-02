@@ -23,6 +23,7 @@ const components = {
                 <Image
                     alt="Amplify logo"
                     src="https://docs.amplify.aws/assets/logo-dark.svg"
+                    className="flex justify-center mt-10"
                 />
             </View>
         );
@@ -34,7 +35,7 @@ const components = {
         return (
             <View textAlign="center" padding={tokens.space.large}>
                 <Text color={tokens.colors.neutral[80]}>
-                    &copy; All Rights Reserved
+                    <p className="">Powered by <span className="text-yellow-600"> AWS Cognito and Amplify</span></p>
                 </Text>
             </View>
         );
