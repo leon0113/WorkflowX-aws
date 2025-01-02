@@ -171,7 +171,7 @@ const Sidebar = () => {
 
       <div className="z-10 mt-32 flex w-full flex-col items-center gap-4 bg-white px-8 py-4 dark:bg-black md:hidden">
         <div className='flex w-full items-center'>
-          <span className='mx-3 text-gray-800 dark:text-white' title={currentUserDetails.email}>{currentUserDetails.username}</span>
+          <span className='mx-3 text-gray-800 dark:text-white'>{currentUserDetails.username}</span>
           <button className='self-start rounded bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block'
             onClick={handleSignOut}
           >

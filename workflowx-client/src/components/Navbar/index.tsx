@@ -72,7 +72,7 @@ const Navbar: FC = () => {
                 </Link>
                 <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
                 <div className='hidden items-center justify-between md:flex'>
-                    <span className='mx-3 text-gray-800 dark:text-white' title={currentUserDetails.email}>{currentUserDetails.username}</span>
+                    <span className='mx-3 text-gray-800 dark:text-white'>{currentUserDetails.username}</span>
                     <button className='hidden rounded bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block'
                         onClick={handleSignOut}
                     >
