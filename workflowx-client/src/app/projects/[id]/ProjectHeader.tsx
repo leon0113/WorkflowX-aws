@@ -45,6 +45,7 @@ const ProjectHeader = ({ id, activeTab, setActiveTab }: Props) => {
             <div className='py-6 lg:pb-4 lg:pt-8'>
                 <Header name={data?.name!} buttonComponent={
                     <button
+                        disabled
                         className='flex items-center rounded-md bg-blue-primary px-3 py-2 text-white hover:bg-blue-600'
                         onClick={() => setIsModalNewProjectOpen(true)}
                     >

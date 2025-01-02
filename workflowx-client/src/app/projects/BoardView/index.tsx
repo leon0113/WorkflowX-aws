@@ -28,6 +28,7 @@ const BoardView = ({ id, setIsModalNewTaskOpen, setGivenStatus }: Props) => {
             <div className="pt-5 md:pl-10 px-5 lg:px-10">
                 <Header name="Board View" buttonComponent={
                     <button
+                        disabled
                         className='flex items-center bg-blue-primary px-3 py-2 text-white hover:bg-blue-600'
                         onClick={() => setIsModalNewTaskOpen(true)}
                     >

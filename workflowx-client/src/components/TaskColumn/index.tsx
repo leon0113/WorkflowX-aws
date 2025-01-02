@@ -52,6 +52,7 @@ const TaskColumn = ({ status, tasks, moveTask, setIsModalNewTaskOpen, setGivenSt
                             <EllipsisVertical size={26} />
                         </button>
                         <button
+                            disabled
                             className='flex size-6 items-center justify-center rounded bg-gray-200 dark:bg-dark-tertiary dark:text-white'
                             onClick={() => { setIsModalNewTaskOpen(true), setGivenStatus(status) }}
                         >

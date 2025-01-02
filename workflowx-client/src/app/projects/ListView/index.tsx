@@ -24,6 +24,7 @@ const ListView = ({ id, setIsModalNewTaskOpen }: Props) => {
             <div className="pt-5">
                 <Header name="List" buttonComponent={
                     <button
+                        disabled
                         className='flex items-center bg-blue-primary px-3 py-2 text-white hover:bg-blue-600'
                         onClick={() => setIsModalNewTaskOpen(true)}
                     >
