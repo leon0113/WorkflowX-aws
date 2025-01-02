@@ -73,7 +73,7 @@ const formFields = {
 const AuthProvider = ({ children }: any) => {
     return (
         <div>
-            <Authenticator formFields={formFields}>
+            <Authenticator formFields={formFields} components={components}>
                 {({ user }: any) =>
                     user ? (
                         <div>{children}</div>
