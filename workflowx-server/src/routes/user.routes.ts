@@ -5,6 +5,6 @@ const userRouter = Router();
 
 userRouter.get('/', getUsers);
 userRouter.get('/:cognitoId', getUser);
-userRouter.post('/', postUser);
+userRouter.post('/create', postUser);
 
 export default userRouter;
