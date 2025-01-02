@@ -20,10 +20,12 @@ const components = {
 
         return (
             <View textAlign="center" padding={tokens.space.large}>
-                <Image
-                    alt="Amplify logo"
-                    src="https://docs.amplify.aws/assets/logo-dark.svg"
-                />
+                <div className="flex justify-center mt-20">
+                    <Image
+                        alt="Amplify logo"
+                        src="https://docs.amplify.aws/assets/logo-dark.svg"
+                    />
+                </div>
             </View>
         );
     },
@@ -34,7 +36,16 @@ const components = {
         return (
             <View textAlign="center" padding={tokens.space.large}>
                 <Text color={tokens.colors.neutral[80]}>
-                    <p className="">Powered by <span className="text-yellow-600"> AWS Cognito and Amplify</span></p>
+                    <footer className="bg-gray-800 text-white py-4">
+                        <div className="container mx-auto text-center">
+                            <p className="text-sm">
+                                Powered by <span className="text-yellow-500">AWS Cognito and Amplify</span>
+                            </p>
+                            <p className="text-xs mt-2 text-gray-400">
+                                © 2025 <span className="text-white">Leon0113</span>. All rights reserved.
+                            </p>
+                        </div>
+                    </footer>
                 </Text>
             </View>
         );
