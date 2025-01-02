@@ -22,7 +22,7 @@ const Navbar: FC = () => {
         }
     }
     if (!currentUser) return null;
-
+    console.log(currentUser.userSub);
     const currentUserDetails = currentUser.userDetails
 
     return (

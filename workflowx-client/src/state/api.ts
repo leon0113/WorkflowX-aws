@@ -2,8 +2,6 @@ import { Project, SearchResults, Task, Team, User } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
 import _ from "lodash";
-import { headers } from "next/headers";
-
 
 export const api = createApi({
     baseQuery: fetchBaseQuery({
@@ -72,7 +70,7 @@ export const api = createApi({
             providesTags: (result, error, userId) => result ? result.map(({ id }) => ({ type: "Tasks", id })) : [{ type: "Tasks", id: userId }],
         }),
         getAuthUser: build.query({
-            queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
+            queryFn: async (_, _queryApi, _extraoptions, fetchWithBQ) => {
                 try {
                     const user = await getCurrentUser();
                     const session = await fetchAuthSession();
