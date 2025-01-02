@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import StoreProvider, { useAppSelector } from './redux'
 import clsx from 'clsx'
+import AuthProvider from './authProvider'
 
 interface Props {
     children: React.ReactNode
@@ -39,7 +40,9 @@ const DashboardLayout: FC<Props> = ({ children }) => {
 const DashboardWrapper: FC<Props> = ({ children }) => {
     return (
         <StoreProvider>
-            <DashboardLayout>{children}</DashboardLayout >
+            <AuthProvider>
+                <DashboardLayout>{children}</DashboardLayout >
+            </AuthProvider>
         </StoreProvider >
     )
 }
