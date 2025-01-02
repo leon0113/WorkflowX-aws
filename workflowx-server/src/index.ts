@@ -1,14 +1,14 @@
-import express from 'express';
-import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import projectRouter from './routes/project.routes';
-import taskRouter from './routes/task.routes';
 import searchRouter from './routes/search.routes';
-import userRouter from './routes/user.routes';
+import taskRouter from './routes/task.routes';
 import teamRouter from './routes/teams.routes';
+import userRouter from './routes/user.routes';
 
 
 dotenv.config();
@@ -30,6 +30,8 @@ app.use('/api/tasks', taskRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/users', userRouter);
 app.use('/api/teams', teamRouter);
+
+
 
 const port = Number(process.env.PORT) || 5001;
 

@@ -37,7 +37,7 @@ const Task = ({ task }: TaskProps) => {
             ref={(instance) => {
                 drag(instance)
             }}
-            className={clsx('mb-4 rounded-md bg-white shadow dark:bg-dark-secondary', isDragging ? "opacity-50" : "opacity-100")}
+            className={clsx('mb-4 rounded-md bg-white shadow dark:bg-dark-secondary', isDragging ? "opacity-50" : "opacity-100 cursor-grabbing")}
         >
             {
                 task.attachments && task.attachments.length > 0 && (

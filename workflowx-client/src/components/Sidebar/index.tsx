@@ -94,7 +94,7 @@ const Sidebar = () => {
           </h1>
           {/* closing btn */}
           <button
-            className="py-3 md:hidden"
+            className="py-3"
             onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
           >
             <X className="w-6 h-6 text-gray-800 hover:text-gray-500 dark:text-white" />

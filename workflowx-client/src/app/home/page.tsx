@@ -109,9 +109,9 @@ const HomePage = () => {
         Completed: 7,
     };
 
-    const projectStatus = Object.keys(ProjectStatusCount).map((key) => ({
+    const projectStatus = Object.keys(statusCount).map((key) => ({
         name: key,
-        count: ProjectStatusCount[key as 'Active' | 'Completed'],
+        count: statusCount[key as 'Active' | 'Completed'],
     }));
 
     const chartColors = isDarkMode
