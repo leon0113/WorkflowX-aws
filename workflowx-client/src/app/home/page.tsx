@@ -1,13 +1,15 @@
 "use client";
 
+import Header from "@/components/Header";
+import { dataGridClassNames, dataGridSxStyles } from "@/lib/utlis";
 import {
     useGetProjectsQuery,
-    useGetUserTasksQuery,
+    useGetTasksQuery,
 } from "@/state/api";
-import React from "react";
-import { useAppSelector } from "../redux";
+import { Priority, Project, Task } from "@/types";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Header from "@/components/Header";
+import { format } from "date-fns";
+import Image from "next/image";
 import {
     Bar,
     BarChart,
@@ -21,11 +23,7 @@ import {
     XAxis,
     YAxis,
 } from "recharts";
-import { dataGridClassNames, dataGridSxStyles } from "@/lib/utlis";
-import { Priority, Project, Task } from "@/types";
-import { format } from "date-fns";
-import Image from "next/image";
-import Link from "next/link";
+import { useAppSelector } from "../redux";
 
 const taskColumns: GridColDef[] = [
     { field: "title", headerName: "Title", width: 200 },
@@ -70,12 +68,9 @@ const taskColumns: GridColDef[] = [
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const HomePage = () => {
-
-
-    const userId = 1;
     const { data: tasks,
         isLoading: tasksLoading,
-        isError: tasksError, } = useGetUserTasksQuery(userId, { skip: userId === null });
+        isError: tasksError, } = useGetTasksQuery({ projectId: Number("1") })
 
     const { data: projects, isLoading: isProjectsLoading } = useGetProjectsQuery();
 
@@ -175,11 +170,9 @@ const HomePage = () => {
                     </ResponsiveContainer>
                 </div>
                 <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary md:col-span-2">
-                    <Link href={`/projects/17`}>
-                        <h3 className="mb-4 text-lg hover:text-blue-600 dark:hover:text-blue-600 font-semibold dark:text-white hover:underline cursor-pointer ">
-                            Your Created/Assigned Tasks
-                        </h3>
-                    </Link>
+                    <h3 className="mb-4 text-lg hover:text-blue-600 dark:hover:text-blue-600 font-semibold dark:text-white hover:underline cursor-pointer ">
+                        Your Tasks
+                    </h3>
                     <div style={{ height: 400, width: "100%" }}>
                         <DataGrid
                             rows={tasks}
