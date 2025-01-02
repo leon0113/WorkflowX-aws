@@ -5,3 +5,4 @@ workflowx-client/.next/
 workflowx-server/node_modules
 workflowx-server/dist/
 workflowx-server/.env
+.vscode
