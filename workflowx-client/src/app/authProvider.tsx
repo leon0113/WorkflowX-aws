@@ -23,8 +23,7 @@ const components = {
                 <Image
                     alt="Amplify logo"
                     src="https://docs.amplify.aws/assets/logo-dark.svg"
-                    className="flex justify-center mt-10"
-                />q
+                />
             </View>
         );
     },
@@ -74,7 +73,7 @@ const formFields = {
 const AuthProvider = ({ children }: any) => {
     return (
         <div>
-            <Authenticator formFields={formFields} components={components}>
+            <Authenticator formFields={formFields}>
                 {({ user }: any) =>
                     user ? (
                         <div>{children}</div>
