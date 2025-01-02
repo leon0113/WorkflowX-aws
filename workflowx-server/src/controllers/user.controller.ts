@@ -28,4 +28,19 @@ export const postUser = async (req: Request, res: Response) => {
         res.status(500).json({ message: `An error occurred while fetching users, Error: ${error}` });
     }
 
-}
+};
+
+
+export const getUser = async (req: Request, res: Response): Promise<void> => {
+    const { cognitoId } = req.params;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                cognitoId: cognitoId
+            }
+        });
+        res.status(200).json(user)
+    } catch (error: any) {
+        res.status(500).json({ message: `An error occurred while fetching user, Error: ${error}` });
+    }
+};

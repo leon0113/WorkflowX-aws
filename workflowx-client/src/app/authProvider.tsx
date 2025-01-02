@@ -42,7 +42,7 @@ const components = {
                                 Powered by <span className="text-yellow-500">AWS Cognito and Amplify</span>
                             </p>
                             <p className="text-xs mt-2 text-gray-400">
-                                © 2025 <span className="text-white">Leon0113</span>. All rights reserved.
+                                © 2025 <a href="https://github.com/leon0113" className="text-white cursor-pointer hover:text-gray-600">leon0113</a>. All rights reserved.
                             </p>
                         </div>
                     </footer>

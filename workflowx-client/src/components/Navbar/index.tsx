@@ -4,12 +4,26 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsDarkMode, setIsSidebarCollapsed } from '@/state';
 import clsx from 'clsx';
+import { useGetAuthUserQuery } from '@/state/api';
+import { signOut } from 'aws-amplify/auth';
 
 
 const Navbar: FC = () => {
     const dispatch = useAppDispatch();
     const isSidebarCollapsed = useAppSelector((state: any) => state.global.isSidebarCollapsed);
     const isDarkMode = useAppSelector((state: any) => state.global.isDarkMode);
+
+    const { data: currentUser } = useGetAuthUserQuery({});
+    const handleSignOut = async () => {
+        try {
+            await signOut()
+        } catch (error) {
+            alert(error)
+        }
+    }
+    if (!currentUser) return null;
+
+    const currentUserDetails = currentUser.userDetails
 
     return (
         <div className='flex items-center justify-between bg-white px-10 py-3 dark:bg-dark-bg'>
@@ -57,6 +71,14 @@ const Navbar: FC = () => {
                     <Settings className='h-6 w-6 cursor-pointer dark:text-white' />
                 </Link>
                 <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
+                <div className='hidden items-center justify-between md:flex'>
+                    <span className='mx-3 text-gray-800 dark:text-white' title={currentUserDetails.email}>{currentUserDetails.username}</span>
+                    <button className='hidden rounded bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block'
+                        onClick={handleSignOut}
+                    >
+                        Sign Out
+                    </button>
+                </div>
             </div>
         </div>
     )

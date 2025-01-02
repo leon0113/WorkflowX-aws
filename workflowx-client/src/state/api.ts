@@ -1,9 +1,22 @@
 import { Project, SearchResults, Task, Team, User } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
+import _ from "lodash";
+import { headers } from "next/headers";
 
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+        prepareHeaders: async (headers) => {
+            const session = await fetchAuthSession();
+            const { accessToken } = session.tokens ?? {};
+            if (accessToken) {
+                headers.set("Authorization", `Bearer ${accessToken}`)
+            }
+            return headers
+        }
+    }),
     reducerPath: 'api',
     tagTypes: ['Projects', "Tasks", "Users", "Teams"],
     endpoints: (build) => ({
@@ -58,7 +71,25 @@ export const api = createApi({
             query: (userId) => `tasks/user/${userId}`,
             providesTags: (result, error, userId) => result ? result.map(({ id }) => ({ type: "Tasks", id })) : [{ type: "Tasks", id: userId }],
         }),
+        getAuthUser: build.query({
+            queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
+                try {
+                    const user = await getCurrentUser();
+                    const session = await fetchAuthSession();
+                    if (!session) throw new Error("No session found");
+                    const { userSub } = session;
+                    const { accessToken } = session.tokens ?? {};
+
+                    const userDetailsResponse = await fetchWithBQ(`users/${userSub}`);
+                    const userDetails = userDetailsResponse.data as User;
+
+                    return { data: { user, userSub, userDetails } }
+                } catch (error: any) {
+                    return { error: error.message || "Error fetching user" }
+                }
+            }
+        })
     })
 });
 
-export const { useGetProjectsQuery, useCreateProjectMutation, useGetTasksQuery, useCreateTaskMutation, useUpdateTaskStatusMutation, useGetSingleProjectQuery, useSearchQuery, useGetUsersQuery, useGetTeamsQuery, useGetUserTasksQuery } = api;
+export const { useGetProjectsQuery, useCreateProjectMutation, useGetTasksQuery, useCreateTaskMutation, useUpdateTaskStatusMutation, useGetSingleProjectQuery, useSearchQuery, useGetUsersQuery, useGetTeamsQuery, useGetUserTasksQuery, useGetAuthUserQuery } = api;
