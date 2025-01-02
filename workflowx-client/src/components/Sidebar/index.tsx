@@ -9,6 +9,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+// {
+//   href: '/search',
+//   icon: Search,
+//   label: 'Search'
+// },
+
 const navbarLinks = [
   {
     href: '/',
@@ -20,11 +26,7 @@ const navbarLinks = [
     icon: Briefcase,
     label: 'Timeline'
   },
-  {
-    href: '/search',
-    icon: Search,
-    label: 'Search'
-  },
+
   {
     href: '/setting',
     icon: Settings,
