@@ -65,7 +65,7 @@ const Navbar: FC = () => {
                         )
                     }
                 </button>
-                <Link href="/settings"
+                <Link href="/setting"
                     className={clsx(`rounded p-2 h-min w-min`, isDarkMode ? 'dark:hover:bg-gray-700' : 'hover:bg-gray-100')}
                 >
                     <Settings className='h-6 w-6 cursor-pointer dark:text-white' />

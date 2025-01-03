@@ -34,7 +34,7 @@ const PriorityPage = ({ priority }: Props) => {
             <Header name={`${priority} Priority Tasks`} buttonComponent={
                 <button
                     disabled
-                    className='flex items-center bg-blue-primary px-3 py-2 rounded text-white hover:bg-blue-600'
+                    className='flex items-center bg-blue-300 px-3 py-2 rounded text-white'
                     onClick={() => setIsModalNewTaskOpen(true)}
                 >
                     Add Task
